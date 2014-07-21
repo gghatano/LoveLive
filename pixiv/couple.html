@@ -942,11 +942,28 @@ img.mfp-img {
 <body>
 <h1>ラブライブ百合ネットワーク</h1>
 
-<p>アニオタ社会復帰への道のこの記事 
+<p>&quot;アニオタ社会復帰への道&quot; の 
 <a href="http://d.hatena.ne.jp/MikuHatsune/20130905">http://d.hatena.ne.jp/MikuHatsune/20130905</a>
-の追試をしました. </p>
+をやってみました. </p>
 
-<p>利用するパッケージ. </p>
+<ul>
+<li>やること
+
+<ul>
+<li>Pixiv小説タグからデータを取得</li>
+<li>カップリングタグを拾って数を集計</li>
+<li>ネットワーク状況を可視化</li>
+<li>アイコンを載せて楽しく</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">library(knitr)
+library(data.table)
+library(png)
+library(dplyr)
+library(igraph)
+library(foreach)
+</code></pre>
 
 <h2>データの取得</h2>
 

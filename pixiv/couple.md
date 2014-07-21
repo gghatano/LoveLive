@@ -1,11 +1,24 @@
 ラブライブ百合ネットワーク
 ===
-アニオタ社会復帰への道のこの記事 
+"アニオタ社会復帰への道" の 
 http://d.hatena.ne.jp/MikuHatsune/20130905
-の追試をしました. 
+をやってみました. 
 
-利用するパッケージ. 
+* やること
+ * Pixiv小説タグからデータを取得
+ * カップリングタグを拾って数を集計
+ * ネットワーク状況を可視化
+ * アイコンを載せて楽しく
 
+
+```r
+library(knitr)
+library(data.table)
+library(png)
+library(dplyr)
+library(igraph)
+library(foreach)
+```
 
 ## データの取得
 まずは, データの取得です. 
