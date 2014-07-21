@@ -1,0 +1,10 @@
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=1&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=2&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=3&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=4&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=5&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=6&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=7&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=8&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=9&word=ラブライブ
+http://spapi.pixiv.net/iphone/search_novel.php?s_mode=s_tag&p=10&word=ラブライブ
