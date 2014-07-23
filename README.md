@@ -28,7 +28,7 @@ pixivからデータを引っ張ってきて, ネットワーク解析しまし�
  * locatorで座標を取得, アイコンをネットワークの図に貼り付け. 
 
 
-## score 進捗: ![Progress](http://progressed.io/bar/25)
+## score ![Progress](http://progressed.io/bar/25)
 
 過去イベントのスコア推移を見て, n枚どりのボーダーライン推定をしたいです. 
 
