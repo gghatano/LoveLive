@@ -7,26 +7,6 @@ pixivからデータを引っ張ってきて, ネットワーク解析しまし�
 
 結果: [http://gghatano.github.io/LoveLive/pixiv/couple.html]
 
-### データ取得
-
-* 進捗: ![Progress](http://progressed.io/bar/100)
-
- * pixivの小説タグを拾ってパースして集計
-
-### 可視化
-
-* 進捗: ![Progress](http://progressed.io/bar/100)
-
- * igraphに接続行列を渡してネットワークに
-
-### 画像貼り付け
-
-* 進捗: ![Progress](http://progressed.io/bar/100)
-
- * pngで画像を用意
- * library(png)でpngデータを読み込み
- * locatorで座標を取得, アイコンをネットワークの図に貼り付け. 
-
 
 ## score ![Progress](http://progressed.io/bar/25)
 
