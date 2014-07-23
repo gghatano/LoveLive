@@ -1,7 +1,7 @@
 データで遊ぶ
 ====
 
-## pixiv
+## pixiv ![Progress](http://progressed.io/bar/100)
 
 pixivからデータを引っ張ってきて, ネットワーク解析しました. 
 
@@ -28,7 +28,7 @@ pixivからデータを引っ張ってきて, ネットワーク解析しまし�
  * locatorで座標を取得, アイコンをネットワークの図に貼り付け. 
 
 
-## score 
+## score 進捗: ![Progress](http://progressed.io/bar/25)
 
 過去イベントのスコア推移を見て, n枚どりのボーダーライン推定をしたいです. 
 
