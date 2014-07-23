@@ -10,5 +10,5 @@ pixivからデータを引っ張ってきて, ネットワーク解析しまし�
 
 イベントのスコア推移を見て, n枚どりのライン推定をしたいです. 
 
-[http://progressed.io/bar/29]
+(http://progressed.io/bar/29)
 
