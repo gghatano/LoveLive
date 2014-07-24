@@ -12,7 +12,7 @@ http://d.hatena.ne.jp/MikuHatsune/20130905
 
 最終的にこんな感じのグラフが出来ました. 
 
-![Progress](~/works/LoveLive/pixiv/figure/unnamed-chunk7.png)
+![Progress](https://github.com/gghatano/LoveLive/blob/master/pixiv/network.png)
 
 
 ```{r,  message=FALSE, warning==FALSE}
