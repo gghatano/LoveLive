@@ -10,6 +10,11 @@ http://d.hatena.ne.jp/MikuHatsune/20130905
  * ネットワーク状況を可視化
  * アイコンを載せて楽しく
 
+最終的にこんな感じのグラフが出来ました. 
+
+![Progress](~/works/LoveLive/pixiv/figure/unnamed-chunk7.png)
+
+
 
 ```r
 library(knitr)
