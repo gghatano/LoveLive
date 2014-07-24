@@ -12,7 +12,7 @@ http://d.hatena.ne.jp/MikuHatsune/20130905
 
 最終的にこんな感じのグラフが出来ました. 
 
-![Progress](https://github.com/gghatano/LoveLive/blob/master/pixiv/network.png)
+![Progress](https://raw.githubusercontent.com/gghatano/LoveLive/master/pixiv/network.png)
 
 
 ```{r,  message=FALSE, warning==FALSE}
