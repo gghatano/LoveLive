@@ -8,13 +8,13 @@ pixivからデータを引っ張ってきて, ネットワーク解析しまし�
 結果: [http://gghatano.github.io/LoveLive/pixiv/couple.html]
 
 
-## score ![Progress](http://progressed.io/bar/25)
+## score ![Progress](http://progressed.io/bar/50)
 
 過去イベントのスコア推移を見て, n枚どりのボーダーライン推定をしたいです. 
 
 ### データ取得
 
-* 進捗: ![Progress](http://progressed.io/bar/50)
+* 進捗: ![Progress](http://progressed.io/bar/100)
 
  * 現状, 生データのまま.
  * イベント, 時刻とその時刻でのボーダーラインが取得できています.

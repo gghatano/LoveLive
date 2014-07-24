@@ -29,13 +29,13 @@ get_line = function(text, n){
 }
 ## ラブライブボーダーつぶやきbot
 tweet = userTimeline("llborder_update", 1)
-tweet_df = twListToDF(tweet) %>% as.data.table %>% select(text, id) %>% 
+tweet_df = twListToDF(tweet) %>% as.data.table %>% select(text, id, created) %>% 
   mutate(event = sapply(text, FUN = function(x){as.character(get_line(text=x,n=1))})) %>% 
   mutate(first = sapply(text, FUN = function(x){as.character(get_line(text=x,n=2))})) %>% 
   mutate(second = sapply(text, FUN = function(x){as.character(get_line(text=x,n=3))}))%>%
-  select(-text)
+  select(-text) %>% 
+  select(id, event, first, second, created)
 tweet_df
-
 
 # 今のツイートのID
 maxid = tweet_df %>% select(id) %>% unlist %>% as.character
@@ -44,19 +44,21 @@ maxid = maxid %>% as.numeric -1
 for(i in 1:22){
   print(paste("i = " ,i))
   tweet_i = userTimeline("llborder_update", n=100, maxID=maxid) %>% twListToDF %>% as.data.table %>% 
-    select(text,id) %>% 
+    select(text,id,created) %>% 
     mutate(event = sapply(text, FUN = function(x){as.character(get_line(text=x,n=1))})) %>% 
     mutate(first = sapply(text, FUN = function(x){as.character(get_line(text=x,n=2))})) %>%
     mutate(second = sapply(text, FUN = function(x){as.character(get_line(text=x,n=3))})) %>% 
-    select(-text)
+    select(-text) %>% 
+    select(id, event, first, second, created)
+    
   tweet_df = rbind(tweet_df, tweet_i) 
   maxid = tweet_df %>% select(id) %>% tail(1) %>% unlist %>% as.character %>% as.numeric
   maxid = maxid - 1
 }
-  
+
 ## 保存しておく
 tweet_df %>% write.table("LoveLive_score.csv", row.names=FALSE, sep=",")
-
+fread("LoveLive_score.csv")
 
 dat = fread("LoveLive_score.csv")
 text = "7000位： 9444444pts（+33333pts）" %>% tolower

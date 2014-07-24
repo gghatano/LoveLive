@@ -1,0 +1,49 @@
+データの整形
+===
+
+```{r}
+library(data.table)
+library(dplyr)
+dat = fread("LoveLive_score.csv", header=TRUE)
+dat = dat %>% tail(-1)
+```
+
+イベントについて
+```{r}
+event = dat$V2
+res = sapply(X = event, FUN = function(x){sub("開催中イベント：(.*)", "\\1",x)})
+res_event = res %>% as.character
+```
+
+
+スコアについて
+```{r}
+score_first = dat$V3
+res_score_first = sapply(X=score_first, FUN = function(x){sub("\\d+\\D+(\\d+)\\D+\\d+\\D+", "\\1", x)})
+res_score_first = res_score_first %>% as.character
+
+score_second = dat$V4
+res_score_second = sapply(X=score_second, FUN = function(x){sub("\\d+\\D+(\\d+)\\D+\\d+\\D+", "\\1", x)})
+res_score_second = res_score_second %>% as.character
+```
+
+いけるかな?
+```{r}
+dat_modified = 
+  dat %>% 
+  mutate(event = sapply(X = event, FUN = function(x){sub("開催中イベント.(.*)", "\\1",x)})) %>% 
+  mutate(first = sapply(X=first, FUN = function(x){sub("\\d+\\D+(\\d+)\\D+\\d+\\D+", "\\1", x)})) %>% 
+  mutate(second = sapply(X=second, FUN = function(x){sub("\\d+\\D+(\\d+)\\D+\\d+\\D+", "\\1", x)})) %>% 
+  select(event, first, second, created)
+
+## 保存する
+dat_modified %>% write.table("LoveLive_score_modified.csv", quote=FALSE, row.names=FALSE, sep=",")
+```
+
+できたデータ
+```{r}
+dat = fread("LoveLive_score_modified.csv", sep=",")
+dat
+```
+
+
