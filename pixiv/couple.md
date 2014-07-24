@@ -14,7 +14,7 @@ http://d.hatena.ne.jp/MikuHatsune/20130905
 
 ![Progress](https://raw.githubusercontent.com/gghatano/LoveLive/master/pixiv/network.png)
 
-
+使うライブラリ
 
 ```r
 library(knitr)
@@ -22,7 +22,6 @@ library(data.table)
 library(png)
 library(dplyr)
 library(igraph)
-library(foreach)
 ```
 
 ## データの取得
