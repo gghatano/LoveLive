@@ -30,6 +30,7 @@ dat_scoreMatch =
   dat %>% merge(dat_score_match, by = "event") %>% 
   filter(score_match == 1) %>% 
   mutate(event_number = substr(event, start=2,stop=3))
+dat_scoreMatch %>% write.table("scoreMatch.csv", quote=FALSE, row.names=FALSE, sep=",")
 
 ```
 
