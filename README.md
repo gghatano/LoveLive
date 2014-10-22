@@ -8,6 +8,10 @@ pixivからデータを引っ張ってきて, ネットワーク解析しまし�
 結果: [http://gghatano.github.io/LoveLive/pixiv/couple.html]
 
 
+## カード強さ評価 スコア期待値
+
+カードのステータスデータがあるので, 遊びたいです
+
 ## score ![Progress](http://progressed.io/bar/50)
 
 過去イベントのスコア推移を見て, n枚どりのボーダーライン推定をしたいです. 
