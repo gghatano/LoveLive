@@ -1,0 +1,129 @@
+pixivで百合ネットワーク
+===
+
+## 概要 
+
+pixivでカップリング画像の投稿数からネットワーク作って遊びます.
+
+今回は絵のほうです. 
+
+pixivをスクレイプして, カップリング画像の投稿数を調べました. 
+
+```{r, message=FALSE, warning=FALSE}
+library(data.table)
+library(dplyr)
+library(reshape2)
+library(png)
+```
+
+## ネットワークの接続行列
+```{r}
+dat = fread("./res.csv") %>% as.data.frame
+dat %>% arrange(desc(V3)) %>% head
+mat = dat %>% xtabs(formula = V3 ~ .) %>% as.matrix
+mat = mat + t(mat)
+diag(mat) = 0
+mat = mat / 100
+mat
+```
+
+にこまき, のぞえり, りんぱな, ことほのが強いですね. 
+
+## グラフ作成
+```{r}
+library(igraph)
+graph  = graph.adjacency(mat, mode="undirected")
+set.seed(11)
+V(graph)$size <- 30
+V(graph)$color <- NA
+V(graph)$frame.color <- NA
+V(graph)$shape <- "square"
+plot(graph, layout=layout.auto)
+
+```
+
+## 画像を載せる
+
+文字だと寂しいので, 画像を載せます. 
+
+```{r}
+member_english = colnames(mat)
+member_english
+pics = vector("list", 9)
+for(i in 1:9){
+  pics[[i]] = readPNG(paste("images/", member_english[i], ".png", sep=""), native=TRUE)
+}
+## なにこれ
+ra = 1 
+## これもわからん ピクセルが入るらしい
+xy0 = pics %>% sapply(dim)
+rownames(xy0) = c("height", "width")
+## 拡大縮小率
+s0 = 0.0025
+```
+
+ネットワークに画像を載せます.
+```{r}
+## 乱数の固定 グラフが固定されます. 
+set.seed(11)
+
+## グラフィカルパラメータの設定
+V(graph)$size <- 30
+V(graph)$color <- NA
+V(graph)$frame.color <- NA
+V(graph)$shape <- "square"
+## plot. 配置は適当にやってもらう.
+plot(graph, layout=layout.auto)
+title("LoveLive! Coupling Network (Pixiv Image Freq)")
+
+## plotにのせていく
+## 最初は, 座標を取得する
+print(member_english)
+
+# この順番に位置をクリックして, ESCする
+# lay0 = locator()
+# lay0に座標が入る. 
+## 毎回やるのは面倒なので, 1回だけやって書き出しておく
+#lay0 %>% write.table("layout.txt", row.names=FALSE, quote=FALSE)
+
+## 前に取得しておいた座標を使う
+lay0 = fread("layout.txt") %>% as.data.frame
+for(i in 1:9){
+  ## 位置を指定
+  ## locatorで指定した位置が, 画像の中心座標となります.
+  ## あとは, 4隅の座標を計算してあげます
+  xleft=lay0[i, 1]*ra - xy0[2, i]/2*s0
+    ybottom=lay0[i, 2]*ra - xy0[1, i]/2*s0
+    xright=lay0[i, 1]*ra + xy0[2, i]/2*s0
+    ytop=lay0[i, 2]*ra + xy0[1, i]/2*s0
+  ## 指定した画像を載せます
+    rasterImage(image=pics[[i]], xleft=xleft, ybottom=ybottom, xright=xright, ytop=ytop, xpd=TRUE)
+}
+```
+
+
+## ネットワークの特徴量
+
+```{r}
+mat = mat * 100
+graph  = graph.adjacency(mat, mode="undirected")
+## ページランク
+page.rank(graph)
+## 次数
+degree(graph)
+## 接近性
+closeness(graph)
+## 固有ベクトル
+evcent(graph)$vector
+## ボナチッチのべき乗法?
+bonpow(graph)
+```
+
+## コミュニティ抽出
+多重グラフでコミュニティ抽出したい...
+```{r}
+spinglass.community(graph)
+```
+そらそうよ
+
+
