@@ -30,6 +30,8 @@ dat_scoreMatch =
   dat %>% merge(dat_score_match, by = "event") %>% 
   filter(score_match == 1) %>% 
   mutate(event_number = substr(event, start=2,stop=3))
+dat_scoreMatch %>% write.table("scoreMatch.csv", quote=FALSE, row.names=FALSE, sep=",")
+
 ```
 
 ## 第06回のボーダー推移
@@ -71,7 +73,7 @@ dat_scoreMatch_06 %>%
   mutate(value_diff = c(NA, diff(value))) %>% 
   ggplot(aes(x=DATE, y=value_diff)) +
   geom_line(aes(color=variable), size=1) + 
-  scale_x_datetime(breaks=date_breaks("24 hours"), 
+  scale_x_datetime(breaks=date_breaks("12 hours"), 
                    labels = date_format("%m:%d")) + 
   ggtitle("SCORE MATCH #6 (diff of Border Line Score)")
 ```
@@ -85,7 +87,7 @@ dat_scoreMatch_06 %>%
 ```{r}
 dat_scoreMatch_06 %>%
   mutate(DAY = substr(DATE, 1,10)) %>%
-  filter(DAY == "2014-03-13") %>%
+  filter(DAY == "2014-03-14") %>%
   mutate(HOUR = substr(DATE, 12,19)) %>%
   arrange(HOUR) %>% 
   group_by(variable, add=FALSE) %>% 
