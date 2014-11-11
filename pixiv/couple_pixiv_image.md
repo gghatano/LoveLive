@@ -19,8 +19,13 @@ library(png)
 
 ## ネットワークの接続行列
 
+pixivでカップリング名を検索. 投稿作品の数を調べました. 
+
+"にこまき"が4630件で最大でした. 人気です. 
+
 ```r
 dat = fread("./res.csv") %>% as.data.frame
+## 投稿数ランキング
 dat %>% arrange(desc(V3)) %>% head
 ```
 
@@ -38,6 +43,7 @@ dat %>% arrange(desc(V3)) %>% head
 mat = dat %>% xtabs(formula = V3 ~ .) %>% as.matrix
 mat = mat + t(mat)
 diag(mat) = 0
+## 適当に割り算します
 mat = mat / 100
 mat
 ```
@@ -227,6 +233,7 @@ spinglass.community(graph)
 ##  eri hono koto maki niko nozo pana  rin  umi 
 ##    1    1    1    1    1    1    1    1    1
 ```
+
 そらそうよ
 
 

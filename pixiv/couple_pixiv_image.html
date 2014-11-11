@@ -970,7 +970,12 @@ library(png)
 
 <h2>ネットワークの接続行列</h2>
 
+<p>pixivでカップリング名を検索. 投稿作品の数を調べました. </p>
+
+<p>&quot;にこまき&quot;が4630件で最大でした. 人気です. </p>
+
 <pre><code class="r">dat = fread(&quot;./res.csv&quot;) %&gt;% as.data.frame
+## 投稿数ランキング
 dat %&gt;% arrange(desc(V3)) %&gt;% head
 </code></pre>
 
@@ -986,6 +991,7 @@ dat %&gt;% arrange(desc(V3)) %&gt;% head
 <pre><code class="r">mat = dat %&gt;% xtabs(formula = V3 ~ .) %&gt;% as.matrix
 mat = mat + t(mat)
 diag(mat) = 0
+## 適当に割り算します
 mat = mat / 100
 mat
 </code></pre>
