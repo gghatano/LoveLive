@@ -1,0 +1,9 @@
+base
+knitr
+dplyr
+data.table
+ggplot2
+reshape2
+foreach
+iterators
+doMC

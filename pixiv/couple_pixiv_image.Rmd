@@ -128,9 +128,27 @@ bonpow(graph)
 ## コミュニティ抽出
 多重グラフでコミュニティ抽出したい...
 ```{r}
-spinglass.community(graph)
+ll_graph= spinglass.community(graph)
+
+modularity(ll_graph)
+membership(ll_graph)
+
 ```
 
-そらそうよ
+0-1の接続行列なら,　こんな感じで検出できるのに. 
+```{r}
+karate = graph.famous("Zachary")
+wc = walktrap.community(karate)
+          
+modularity(wc)
+membership(wc)
+plot(wc, karate)
 
+```
+
+
+## sessionInfo
+```{r}
+sessionInfo()
+```
 

@@ -222,18 +222,83 @@ bonpow(graph)
 多重グラフでコミュニティ抽出したい...
 
 ```r
-spinglass.community(graph)
+ll_graph= spinglass.community(graph)
+
+modularity(ll_graph)
 ```
 
 ```
-## Graph community structure calculated with the spinglass algorithm
-## Number of communities: 1 
-## Modularity: 0.002118 
-## Membership vector:
+## [1] 0.002118
+```
+
+```r
+membership(ll_graph)
+```
+
+```
 ##  eri hono koto maki niko nozo pana  rin  umi 
 ##    1    1    1    1    1    1    1    1    1
 ```
 
-そらそうよ
+0-1の接続行列なら,　こんな感じで検出できるのに. 
 
+```r
+karate = graph.famous("Zachary")
+wc = walktrap.community(karate)
+          
+modularity(wc)
+```
+
+```
+## [1] 0.3532
+```
+
+```r
+membership(wc)
+```
+
+```
+##  [1] 1 1 2 1 5 5 5 1 2 2 5 1 1 2 3 3 5 1 3 1 3 1 3 4 4 4 3 4 2 3 2 2 3 3
+```
+
+```r
+plot(wc, karate)
+```
+
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+
+```r
+scrape
+```
+
+```
+## Error: オブジェクト 'scrape' がありません
+```
+
+
+
+```r
+sessionInfo()
+```
+
+```
+## R version 3.1.0 (2014-04-10)
+## Platform: x86_64-apple-darwin10.8.0 (64-bit)
+## 
+## locale:
+## [1] ja_JP.UTF-8/ja_JP.UTF-8/ja_JP.UTF-8/C/ja_JP.UTF-8/ja_JP.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] igraph_0.7.1     png_0.1-7        reshape2_1.4     dplyr_0.3.0.2   
+## [5] data.table_1.9.2 knitr_1.6       
+## 
+## loaded via a namespace (and not attached):
+##  [1] assertthat_0.1  DBI_0.3.0       evaluate_0.5.5  formatR_1.0    
+##  [5] grid_3.1.0      lattice_0.20-29 lazyeval_0.1.9  magrittr_1.0.1 
+##  [9] Matrix_1.1-4    parallel_3.1.0  plyr_1.8.1      Rcpp_0.11.2    
+## [13] stringr_0.6.2   tools_3.1.0
+```
 
